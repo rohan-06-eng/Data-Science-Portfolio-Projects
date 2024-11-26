@@ -93,10 +93,12 @@ Welcome to my Data Science Portfolio! This repository showcases a diverse set of
 
 ---
 
-## 🚀 How to Use
-1. Clone the repository using:
+# 🚀 How to Use
+## Clone the repository using:
    ```bash
    git clone https://github.com/your-username/data-science-portfolio.git
+
+After cloning you can use the repository for following purpose:
 
 ## 1. Data Collection
 **Description:** Gathering raw data from various sources.  
@@ -243,20 +245,4 @@ Welcome to my Data Science Portfolio! This repository showcases a diverse set of
 - Robotics and automation  
 - Game AI (e.g., AlphaGo, Chess)  
 
-**Algorithms:**  
-- Q-learning  
-- Deep Q-Networks (DQN)  
 
-## 16. Model Interpretability and Explainability
-**Description:** Making complex models (especially black-box models like deep neural networks) interpretable and explainable.  
-**Techniques:**  
-- SHAP (Shapley Additive Explanations)  
-- LIME (Local Interpretable Model-agnostic Explanations)  
-- Feature importance analysis  
-
-## 17. Cloud Computing & Distributed Systems
-**Description:** Using cloud platforms and distributed systems to scale data science models and handle large datasets.  
-**Tools:**  
-- AWS (Amazon Web Services)  
-- Microsoft Azure  
-- Google Cloud Platform (GCP)  
