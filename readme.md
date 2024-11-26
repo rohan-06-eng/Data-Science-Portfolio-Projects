@@ -98,7 +98,7 @@ Welcome to my Data Science Portfolio! This repository showcases a diverse set of
    ```bash
    git clone https://github.com/your-username/data-science-portfolio.git
 
-After cloning you can use the repository for following purpose:
+## After cloning you can use the repository for following purpose:
 
 ## 1. Data Collection
 **Description:** Gathering raw data from various sources.  
