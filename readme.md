@@ -6,17 +6,17 @@ Welcome to my Data Science Portfolio! This repository showcases a diverse set of
 
 ## 🌟 Repository Structure
 
-### 1. **Algerian Forest Fire Project**
-   - **Type:** Regression Project  
-   - **Description:** Analyzing and predicting forest fires in Algeria using machine learning regression techniques. The dataset includes environmental and fire-related variables.  
-   - **Techniques Used:** Exploratory Data Analysis (EDA), Regression Models, and Feature Engineering.
-
----
-
-### 2. **Complete Python Bootcamp**
+### 1. **Complete Python Bootcamp**
    - **Type:** Learning Resource  
    - **Description:** Python programming fundamentals for data science, covering topics from basics to advanced Python techniques.  
    - **Topics:** Data Structures, Object-Oriented Programming, and Libraries like `NumPy`, `Pandas`, and `Matplotlib`.
+
+---
+
+### 2. **Algerian Forest Fire Project**
+   - **Type:** Regression Project  
+   - **Description:** Analyzing and predicting forest fires in Algeria using machine learning regression techniques. The dataset includes environmental and fire-related variables.  
+   - **Techniques Used:** Exploratory Data Analysis (EDA), Regression Models, and Feature Engineering.
 
 ---
 
