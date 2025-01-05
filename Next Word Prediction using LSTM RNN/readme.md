@@ -53,6 +53,6 @@ This project demonstrates the effectiveness of LSTM RNNs in the task of next wor
 - [Natural Language Processing with Python](https://www.nltk.org/book/)
 
 ## Output
-![Output Image](Next%20Word%20Prediction%20using%20LSTM%20RNN/output/1.png)
-![Continued Output Image](Next%20Word%20Prediction%20using%20LSTM%20RNN/output/2.png)
-![Continued Output Image](Next%20Word%20Prediction%20using%20LSTM%20RNN/output/3.png)
+![Output Image](https://github.com/rohan-06-eng/Data-Science-Portfolio-Projects/blob/main/Next%20Word%20Prediction%20using%20LSTM%20RNN/output/1.png)
+![Continued Output Image](https://github.com/rohan-06-eng/Data-Science-Portfolio-Projects/blob/main/Next%20Word%20Prediction%20using%20LSTM%20RNN/output/2.png)
+![Continued Output Image](https://github.com/rohan-06-eng/Data-Science-Portfolio-Projects/blob/main/Next%20Word%20Prediction%20using%20LSTM%20RNN/output/3.png)
