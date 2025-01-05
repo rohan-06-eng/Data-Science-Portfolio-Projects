@@ -3,54 +3,176 @@
 This project demonstrates the implementation of a Next Word Prediction model using Long Short-Term Memory (LSTM) Recurrent Neural Networks (RNN). The model is trained to predict the next word in a given sequence of words.
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Dataset](#dataset)
-- [Model Architecture](#model-architecture)
-- [Training](#training)
-- [Evaluation](#evaluation)
-- [Usage](#usage)
+# Next Word Prediction using LSTM RNN
+
+This project implements a **Next Word Prediction** system using a **Long Short-Term Memory (LSTM)** Recurrent Neural Network (RNN). The model is trained on text data from Shakespearean plays and predicts the next word in a sequence based on the provided input text. This project serves as a demonstration of Natural Language Processing (NLP) using deep learning.
+
+---
+
+## Table of Contents
+
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Explanation of Code Files](#explanation-of-code-files)
+  - [experiments.ipynb](#1-experimentsipynb)
+  - [app.py](#2-apppy)
+  - [requirements.txt](#3-requirementstxt)
+  - [Text Files](#4-text-files-caesartxt-hamlettxt-macbethtxt)
+  - [tokenizer.pickle](#5-tokenizerpickle)
+  - [Model Files](#6-model-files-next_word_lstm_model_with_early_stoppingh5-next_word_lstmh5)
+- [How to Run the Project](#how-to-run-the-project)
+  - [Install Dependencies](#1-install-dependencies)
+  - [Train the Model (Optional)](#2-train-the-model-optional)
+  - [Run the Flask Application](#3-run-the-flask-application)
 - [Results](#results)
-- [Conclusion](#conclusion)
-- [References](#references)
+- [Technologies Used](#technologies-used)
+- [Future Work](#future-work)
+- [Acknowledgments](#acknowledgments)
+- [Output](#output)
 
-## Introduction
-Next Word Prediction is a common task in Natural Language Processing (NLP) where the goal is to predict the next word in a sequence given the previous words. This project uses an LSTM RNN to achieve this task.
+# Next Word Prediction using LSTM RNN
 
-## Dataset
-The dataset used for training the model is a text corpus. It can be any large text dataset, such as books, articles, or scraped web content. The dataset is preprocessed to create sequences of words for training the model.
+This project implements a **Next Word Prediction** system using a **Long Short-Term Memory (LSTM)** Recurrent Neural Network (RNN). The model is trained on text data from Shakespearean plays and predicts the next word in a sequence based on the provided input text. This project serves as a demonstration of Natural Language Processing (NLP) using deep learning.
 
-## Model Architecture
-The model is built using LSTM layers, which are well-suited for sequence prediction tasks due to their ability to capture long-term dependencies. The architecture includes:
-- An embedding layer to convert words into dense vectors.
-- One or more LSTM layers to process the sequences.
-- A dense layer with a softmax activation function to output the probability distribution of the next word.
+---
 
-## Training
-The model is trained using the following steps:
-1. Preprocess the text data to create input-output pairs.
-2. Tokenize the text and convert words to integer sequences.
-3. Pad sequences to ensure uniform input length.
-4. Train the model using a suitable optimizer and loss function.
+## Features
 
-## Evaluation
-The model's performance is evaluated using metrics such as accuracy and perplexity. The evaluation is done on a separate validation dataset to ensure the model generalizes well to unseen data.
+- Uses an LSTM-based RNN architecture for sequential text prediction.
+- Trained on classical texts, including *Hamlet*, *Macbeth*, and *Julius Caesar* by William Shakespeare.
+- Employs **tokenization** for preprocessing and **early stopping** to prevent overfitting during training.
+- Includes a Flask web application for deploying and testing the model interactively.
 
-## Usage
-To use the model for next word prediction:
-1. Load the trained model.
-2. Provide a sequence of words as input.
-3. The model will output the predicted next word.
+---
+
+## Project Structure
+
+```plaintext
+├── app.py                          # Flask app for deploying the model
+├── caesar.txt                      # Text data: Julius Caesar
+├── experiments.ipynb               # Jupyter notebook for training and analysis
+├── final.txt                       # Combined dataset used for training
+├── hamlet.txt                      # Text data: Hamlet
+├── macbeth.txt                     # Text data: Macbeth
+├── next_word_lstm_model_with_early_stopping.h5  # Trained LSTM model
+├── next_word_lstm.h5               # Alternative version of the trained model
+├── output/
+│   ├── 1.png                       # Visualization or results image
+│   ├── 2.png                       # Visualization or results image
+│   ├── 3.png                       # Visualization or results image
+├── readme.md                       # Project documentation (this file)
+├── requirements.txt                # Python dependencies
+├── tokenizer.pickle                # Tokenizer for text preprocessing
+```
+
+---
+
+## Explanation of Code Files
+
+### 1. **`experiments.ipynb`**
+This notebook contains:
+- **Data Preprocessing**:
+  - Tokenization of text using Keras' `Tokenizer`.
+  - Sequence padding to ensure consistent input length.
+- **Model Building**:
+  - LSTM architecture with embedding layers for word representations.
+  - Use of dropout layers to prevent overfitting.
+- **Training**:
+  - Trained on the dataset using categorical cross-entropy loss and Adam optimizer.
+  - Implements early stopping to monitor validation loss.
+- **Evaluation**:
+  - Performance metrics and visualizations of loss and accuracy.
+
+### 2. **`app.py`**
+This is the Flask application for deploying the trained model. Key components:
+- **Route Definitions**:
+  - `/`: Home page with an input box for users to enter text.
+  - `/predict`: Endpoint for predicting the next word based on user input.
+- **Model Loading**:
+  - Loads the trained LSTM model (`next_word_lstm_model_with_early_stopping.h5`).
+  - Loads the tokenizer (`tokenizer.pickle`) for text preprocessing.
+- **Prediction Logic**:
+  - Processes the input text, predicts the next word, and returns the result.
+
+### 3. **`requirements.txt`**
+Lists all the Python dependencies required for the project, including:
+- `Flask`
+- `TensorFlow`
+- `Keras`
+- `numpy`
+- `pandas`
+
+### 4. **Text Files (`caesar.txt`, `hamlet.txt`, `macbeth.txt`)**
+These files contain raw text data from Shakespearean plays used for training the model.
+
+### 5. **`tokenizer.pickle`**
+Serialized tokenizer object used to preprocess input text during training and prediction.
+
+### 6. **Model Files (`next_word_lstm_model_with_early_stopping.h5`, `next_word_lstm.h5`)**
+- **`next_word_lstm_model_with_early_stopping.h5`**: The final trained model with early stopping applied.
+- **`next_word_lstm.h5`**: Another version of the trained model.
+
+---
+
+## How to Run the Project
+
+### 1. Install Dependencies
+
+Install the required Python libraries by running:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Train the Model (Optional)
+
+To retrain the model, open `experiments.ipynb` and follow the steps for data preprocessing, model training, and evaluation.
+
+### 3. Run the Flask Application
+
+Execute the following command to start the Flask app:
+
+```bash
+python app.py
+```
+
+Access the application at `http://127.0.0.1:5000`.
+
+---
 
 ## Results
-The model achieves satisfactory results in predicting the next word in a sequence. The performance can be further improved by using a larger dataset and fine-tuning the model parameters.
 
-## Conclusion
-This project demonstrates the effectiveness of LSTM RNNs in the task of next word prediction. The model can be used in various applications such as text autocompletion and predictive text input.
+The trained model predicts the next word in a sequence with high accuracy. Below are some example visualizations of the results:
 
-## References
-- [Understanding LSTM Networks](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
-- [Sequence Prediction with LSTM Recurrent Neural Networks in Python with Keras](https://machinelearningmastery.com/sequence-prediction-lstm-recurrent-neural-networks-python-keras/)
-- [Natural Language Processing with Python](https://www.nltk.org/book/)
+![Result 1](output/1.png)
+![Result 2](output/2.png)
+![Result 3](output/3.png)
+
+---
+
+## Technologies Used
+
+- **Python**: Programming language
+- **TensorFlow/Keras**: For building and training the LSTM model
+- **Flask**: For deploying the model as a web application
+- **Jupyter Notebook**: For experimentation and analysis
+
+---
+
+## Future Work
+
+- Train the model on a larger and more diverse dataset.
+- Optimize the model architecture for improved performance.
+- Extend the Flask app to handle real-time user input dynamically.
+
+---
+
+## Acknowledgments
+
+- Text data sourced from public domain works of William Shakespeare.
+- Inspired by NLP applications in AI and machine learning.
+
+---
 
 ## Output
 ![Output Image](https://github.com/rohan-06-eng/Data-Science-Portfolio-Projects/blob/main/Next%20Word%20Prediction%20using%20LSTM%20RNN/output/1.png)
