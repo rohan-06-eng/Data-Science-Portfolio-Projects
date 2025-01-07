@@ -19,20 +19,29 @@ with open('scaler.pkl', 'rb') as file:
     scaler = pickle.load(file)
 
 
-## streamlit app
-st.title('Customer Churn PRediction')
+# Streamlit app
+st.title('Customer Churn Prediction')
 
-# User input
-geography = st.selectbox('Geography', onehot_encoder_geo.categories_[0])
-gender = st.selectbox('Gender', label_encoder_gender.classes_)
-age = st.slider('Age', 18, 92)
-balance = st.number_input('Balance')
-credit_score = st.number_input('Credit Score')
-estimated_salary = st.number_input('Estimated Salary')
-tenure = st.slider('Tenure', 0, 10)
-num_of_products = st.slider('Number of Products', 1, 4)
-has_cr_card = st.selectbox('Has Credit Card', [0, 1])
-is_active_member = st.selectbox('Is Active Member', [0, 1])
+# User input with placeholders
+geography = st.selectbox('Geography (Select)', onehot_encoder_geo.categories_[0], index=0)
+gender = st.selectbox('Gender (Select)', label_encoder_gender.classes_, index=0)
+age = st.slider('Age', 18, 92, value=30)  # Default age set to 30
+balance = st.text_input('Balance', placeholder='Enter balance amount')  # Placeholder for balance
+credit_score = st.text_input('Credit Score', placeholder='Enter credit score')  # Placeholder for credit score
+estimated_salary = st.text_input('Estimated Salary', placeholder='Enter estimated salary')  # Placeholder for salary
+tenure = st.slider('Tenure (Years)', 0, 10, value=5)  # Default tenure set to 5
+num_of_products = st.slider('Number of Products', 1, 4, value=1)
+has_cr_card = st.selectbox('Has Credit Card', ['No', 'Yes'], index=1)  # Using Yes/No options
+is_active_member = st.selectbox('Is Active Member', ['No', 'Yes'], index=1)  # Using Yes/No options
+
+# Convert text inputs to numeric (if not empty)
+balance = float(balance) if balance else 0.0
+credit_score = int(credit_score) if credit_score else 0
+estimated_salary = float(estimated_salary) if estimated_salary else 0.0
+
+# Convert Yes/No inputs to numeric
+has_cr_card_numeric = 1 if has_cr_card == 'Yes' else 0
+is_active_member_numeric = 1 if is_active_member == 'Yes' else 0
 
 # Prepare the input data
 input_data = pd.DataFrame({
@@ -42,8 +51,8 @@ input_data = pd.DataFrame({
     'Tenure': [tenure],
     'Balance': [balance],
     'NumOfProducts': [num_of_products],
-    'HasCrCard': [has_cr_card],
-    'IsActiveMember': [is_active_member],
+    'HasCrCard': [has_cr_card_numeric],
+    'IsActiveMember': [is_active_member_numeric],
     'EstimatedSalary': [estimated_salary]
 })
 
@@ -56,7 +65,6 @@ input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df], axis
 
 # Scale the input data
 input_data_scaled = scaler.transform(input_data)
-
 
 # Predict churn
 prediction = model.predict(input_data_scaled)
